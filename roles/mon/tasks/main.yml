@@ -9,7 +9,7 @@
   file: path=/var/lib/ceph/tmp/keyring.mon.{{ ansible_hostname }} mode=0600 owner=root group=root
 
 - name: Create monitor directory
-  action: file path=/var/lib/ceph/mon/ceph-{{ ansible_hostname }} state=directory owner=root group=root mode=0644
+  file: path=/var/lib/ceph/mon/ceph-{{ ansible_hostname }} state=directory owner=root group=root mode=0644
 
 - name: Ceph monitor mkfs
   command: ceph-mon --mkfs -i {{ ansible_hostname }} --keyring /var/lib/ceph/tmp/keyring.mon.{{ ansible_hostname }} creates=/var/lib/ceph/mon/ceph-{{ ansible_hostname }}/keyring
